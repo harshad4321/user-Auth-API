@@ -7,7 +7,5 @@ router.get('/', function (req, res, next) {
 });
 
 
-router.get('/user', (req, res) => {
-  res.render('user-signup')
-})
+
 module.exports = router;
