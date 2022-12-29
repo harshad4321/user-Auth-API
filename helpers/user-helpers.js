@@ -14,6 +14,24 @@ module.exports = {
         });
     },
 
+    exists: (userData) => {
+        return new Promise(async (resolve, reject) => {
+            let SignupStatus = false
+            let response = {}
+            let user = await db.get().collection(collection.USER_COLLECTION).findOne({ email: userData.email })
+            {
+                if (user) {
+                    response.user = user
+                    response.status = true
+                    resolve(response)
+
+                }
+                else {
+                    resolve({ states: false })
+                }
+            }
+        })
+    },
 
     doLogin: (userData) => {
         return new Promise(async (resolve, reject) => {
@@ -45,7 +63,4 @@ module.exports = {
         })
 
     },
-
-
 }
-

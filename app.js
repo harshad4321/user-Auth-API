@@ -5,6 +5,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var colors = require('colors');
+var session = require('express-session')
 
 var hbs = require('express-handlebars')
 
@@ -29,6 +30,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.use(
+  session({
+    secret: "Key",
+    resave: true,
+    saveUninitialized: false,
+    //session expires after 3 hours
+    cookie: { maxAge: 60 * 1000 * 60 * 3 },
+  }),
+);
+
 
 
 //db connection
