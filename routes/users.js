@@ -1,5 +1,7 @@
 var express = require('express');
+const { response } = require('../app');
 var router = express.Router();
+const userHelpers = require('../helpers/user-helpers');
 
 /* GET users listing. */
 router.get('/', (req, res) => {
@@ -7,7 +9,9 @@ router.get('/', (req, res) => {
 })
 
 router.post('/signup', (req, res) => {
-
+  userHelpers.doSignup(req.body).then((response) => {
+    console.log(response);
+  })
 })
 
 

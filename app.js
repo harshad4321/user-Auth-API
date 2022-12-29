@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 db.connect((err) => {
   if (err) console.log('connection ERROR', + err);
-  else console.log(`Database is connected to port 27017`.yellow.bold);
+  else console.log(`Database is connected to port `.yellow.bold);
 });
 
 
