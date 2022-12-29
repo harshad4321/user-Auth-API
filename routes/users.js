@@ -4,8 +4,9 @@ var router = express.Router();
 const userHelpers = require('../helpers/user-helpers');
 const middleware = require("../middleware");
 
-const protect = require('../middleware/auth')
 const generateToken = require('../utils/generateToken')
+
+
 
 
 // GET: display the signup  
@@ -14,6 +15,8 @@ router.get('/', middleware.verifyNotLogin,
     // checking SignupErr
     res.render('user-signup', { "SignupErr": req.session.userSignupErr })
     req.session.userSignupErr = null
+    //  checking errorMsg 
+
 
   });
 
@@ -23,6 +26,7 @@ router.get('/', middleware.verifyNotLogin,
 // POST: handle the signup logic
 router.post(
   '/signup',
+
 
   (req, res) => {
     userHelpers.exists(req.body).then((response) => {
@@ -64,6 +68,7 @@ router.get('/login', (req, res) => {
 // POST: handle the signin logic
 router.post(
   '/login',
+
 
   (req, res) => {
     userHelpers.doLogin(req.body).then((response) => {
