@@ -15,4 +15,16 @@ router.post('/signup', (req, res) => {
 })
 
 
+router.get('/login', (req, res) => {
+  res.render('login')
+})
+
+router.post('/login', (req, res) => {
+  userHelpers.doLogin(req.body)
+})
+
+
+
+
+
 module.exports = router;
