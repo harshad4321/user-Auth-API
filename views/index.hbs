@@ -1,2 +1,11 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
+{{#if user}}
+<h3> hello {{user.name}} , </h3>
+<h4> its a user-Auth-API In this project for user authentication JSON web token,
+    and for user password protection used bcrypt
+    <h4>
+        {{else}} <h1>
+            please signup first
+        </h1>
+        {{/if}}
