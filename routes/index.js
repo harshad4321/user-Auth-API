@@ -6,4 +6,8 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'user-Auth-API' });
 });
 
+
+router.get('/user', (req, res) => {
+  res.render('user-signup')
+})
 module.exports = router;
