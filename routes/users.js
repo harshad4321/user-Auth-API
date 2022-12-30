@@ -89,6 +89,31 @@ router.post(
   });
 
 
+router.get('/change-password', middleware.verifyLogin, async (req, res) => {
+  try {
+    res.render('change-password', {
+      user: req.session.user,
+    })
+
+  } catch (error) {
+    console.log(error);
+  }
+})
+
+
+router.post('/change-password', middleware.verifyLogin, async (req, res) => {
+  try {
+    console.log('req.body, req.session.user._id>>>>>>>.', req.body, req.session.user._id)
+    userHelpers.changePassword(req.body, req.session.user._id).then((response) => {
+
+      res.redirect('/')
+    })
+  } catch (error) {
+    console.log(error);
+  }
+})
+
+
 
 
 // GET: logout
